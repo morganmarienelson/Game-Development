@@ -8,7 +8,7 @@ various animations based on a user's selection.
 ### Installation
 
 * Run `npm install` to install the required dependencies
-* Run `npm start` to run the desired project
+* Run `npm start` to run project
 
 ### Credits
 

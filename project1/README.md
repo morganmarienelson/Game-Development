@@ -7,7 +7,7 @@ This project creates a parallax background that allows for user speed control ma
 ### Installation
 
 * Run `npm install` to install the required dependencies
-* Run `npm start` to run the desired project
+* Run `npm start` to run the project
 
 ### Credits
 

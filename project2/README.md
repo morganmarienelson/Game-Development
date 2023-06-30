@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project creates a flap enemy movement pattern for a bat enemy icon.
+This project displays various movement patterns for enemies within a game.
 
 ### Enemies
 
@@ -25,7 +25,9 @@ Enemy 3 displays random vertical and horizontal sliding motion.
 ### Installation
 
 * Run `npm install` to install the required dependencies
-* Run `npm start` to run the desired project
+* Run `npm start` to run project
+* To view different enemies, change the enemy number in the src attribute of the script tag within the index.html file.
+  After changing the number, save index.html and refresh the browser.
 
 ### Credits
 
