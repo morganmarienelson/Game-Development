@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project consists of smaller projects that I completed to introduce and familairize myself with the processes of
+This project consists of smaller projects that I completed to introduce and familiarize myself with the processes of
 game development.
 
 ### Credits
