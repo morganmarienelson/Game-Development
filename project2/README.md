@@ -4,6 +4,16 @@
 
 This project creates a flap enemy movement pattern for a bat enemy icon.
 
+### Enemies
+
+#### Enemy1.js
+
+Enemy 1 displays vertical motion.
+
+#### Enemy2.js
+
+Enemy 2 displays vertical and endless horizontal motion.
+
 ### Installation
 
 * Run `npm install` to install the required dependencies
