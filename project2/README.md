@@ -14,6 +14,10 @@ Enemy 1 displays vertical motion.
 
 Enemy 2 displays vertical and endless horizontal motion.
 
+#### Enemy3.js
+
+Enemy 3 displays sinusoidal motion.
+
 ### Installation
 
 * Run `npm install` to install the required dependencies
