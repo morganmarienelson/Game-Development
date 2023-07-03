@@ -41,7 +41,7 @@ class Raven {
     }
 
     update(deltaTime) {
-        if (this.y < 0 || this.y > canvas.height - this.height) {
+        if (this.y < 0 || this.y >= canvas.height - this.height) {
             this.directionY = this.directionY * -1;
         }
         this.x -= this.directionX;
