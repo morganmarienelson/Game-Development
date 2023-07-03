@@ -6,7 +6,7 @@ canvas.height = window.innerHeight;
 const collisionCanvas = document.getElementById('collisionCanvas')
 const collisionCtx = collisionCanvas.getContext('2d');
 collisionCanvas.width = window.innerWidth;
-collisionCanvas.height = window.innerHeight;
+collisionCanvas.height = window.innerHeight - 5;
 
 let score = 0;
 let gameOver = false;
@@ -45,7 +45,7 @@ class Raven {
             this.directionY = this.directionY * -1;
         }
         this.x -= this.directionX;
-        this.y += this.directionY;
+        this.y -= this.directionY;
         if (this.x < 0 - this.width) this.markedForDeletion = true;
         this.timeSinceFlap += deltaTime;
         if (this.timeSinceFlap > this.flapInterval) {
