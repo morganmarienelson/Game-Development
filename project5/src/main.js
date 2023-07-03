@@ -54,8 +54,8 @@ class Raven {
     }
 
     draw() {
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        collisionCtx.fillStyle = this.color;
+        collisionCtx.fillRect(this.x, this.y, this.width, this.height);
         ctx.drawImage(this.image, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
     }
 }
@@ -69,18 +69,21 @@ function drawScore() {
 }
 
 window.addEventListener('click', function (e) {
-    const detectPixelColor = ctz.getImageData(e.x, e.y, 1, 1);
-    console.log(detectPixelColor);
+    const detectPixelColor = collisionCtx.getImageData(e.x, e.y, 1, 1);
 })
 
 function animate(timeStamp) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    collisionCtx.clearRect(0, 0, canvas.width, canvas.height);
     let deltaTime = timeStamp - lastTime;
     lastTime = timeStamp;
     timeToNextRaven += deltaTime;
     if (timeToNextRaven > ravenInterval) {
         ravens.push(new Raven());
         timeToNextRaven = 0;
+        ravens.sort(function (a, b) {
+            return a.width - b.width;
+        });
     }
     ;
     drawScore();
