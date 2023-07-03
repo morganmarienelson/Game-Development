@@ -6,7 +6,7 @@ canvas.height = window.innerHeight;
 const collisionCanvas = document.getElementById('collisionCanvas')
 const collisionCtx = collisionCanvas.getContext('2d');
 collisionCanvas.width = window.innerWidth;
-collisionCanvas.height = window.innerHeight - 5;
+collisionCanvas.height = window.innerHeight;
 
 let score = 0;
 let gameOver = false;
