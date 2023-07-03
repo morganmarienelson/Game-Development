@@ -73,7 +73,22 @@ class Explosion {
         this.x = x;
         this.y = y;
         this.frame = 0;
+        this.timeSinceLastFrame = 0;
+        this.frameInterval = 200;
 
+    }
+
+    update(deltaTime) {
+        if (this.frame == 0)
+            this.timeSinceLastFrame += deltaTime;
+        if (this.timeSinceLastFrame > this.frameInterval) {
+            this.frame++;
+        }
+    }
+
+    draw() {
+        ctx.drawImage(this.image, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y,
+            this.size, this.size);
     }
 }
 
@@ -95,6 +110,7 @@ window.addEventListener('click', function (e) {
         ) {
             object.markedForDeletion = true;
             score++;
+            explosions.push(new Explosion(object.x, object.y, object.width));
         }
     })
 })
