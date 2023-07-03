@@ -74,7 +74,8 @@ class Explosion {
         this.y = y;
         this.frame = 0;
         this.timeSinceLastFrame = 0;
-        this.frameInterval = 200;
+        this.frameInterval = 500;
+        this.markedForDeletion = false;
 
     }
 
@@ -83,6 +84,7 @@ class Explosion {
             this.timeSinceLastFrame += deltaTime;
         if (this.timeSinceLastFrame > this.frameInterval) {
             this.frame++;
+            if (this.frame > 5) this.markedForDeletion = true;
         }
     }
 
@@ -130,9 +132,10 @@ function animate(timeStamp) {
     }
     ;
     drawScore();
-    [...ravens].forEach(object => object.update(deltaTime));
-    [...ravens].forEach(object => object.draw());
+    [...ravens, ...explosions].forEach(object => object.update(deltaTime));
+    [...ravens, ...explosions].forEach(object => object.draw());
     ravens = ravens.filter(object => !object.markedForDeletion);
+    explosions = explosions.filter(object => !object.markedForDeletion);
     requestAnimationFrame(animate);
 }
 
