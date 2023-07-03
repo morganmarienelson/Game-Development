@@ -9,6 +9,7 @@ collisionCanvas.width = window.innerWidth;
 collisionCanvas.height = window.innerHeight;
 
 let score = 0;
+let gameOver = false;
 ctx.font = '50px Impact'
 
 let timeToNextRaven = 0;
@@ -52,6 +53,7 @@ class Raven {
             else this.frame++;
             this.timeSinceFlap = 0;
         }
+        if (this.x < 0 - this.width) gameOver = true;
     }
 
     draw() {
@@ -136,7 +138,7 @@ function animate(timeStamp) {
     [...ravens, ...explosions].forEach(object => object.draw());
     ravens = ravens.filter(object => !object.markedForDeletion);
     explosions = explosions.filter(object => !object.markedForDeletion);
-    requestAnimationFrame(animate);
+    if (!gameOver) requestAnimationFrame(animate);
 }
 
 animate(0);
