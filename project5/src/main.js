@@ -61,6 +61,22 @@ class Raven {
     }
 }
 
+let explosions = [];
+
+class Explosion {
+    constructor(x, y, size) {
+        this.image = new Image();
+        this.image.src = "https://www.frankslaboratory.co.uk/downloads/boom.png";
+        this.spriteWidth = 200;
+        this.spriteHeight = 179;
+        this.size = size;
+        this.x = x;
+        this.y = y;
+        this.frame = 0;
+
+    }
+}
+
 
 function drawScore() {
     ctx.fillStyle = 'black';
