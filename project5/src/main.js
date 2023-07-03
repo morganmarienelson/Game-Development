@@ -2,6 +2,11 @@ const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+const collisionCanvas = document.getElementById('collisionCanvas')
+const collisionCtx = canvas.getContext('2d');
+collisionCtx.width = window.innerWidth;
+collisionCtx.height = window.innerHeight;
+
 let score = 0;
 ctx.font = '50px Impact'
 
@@ -24,11 +29,13 @@ class Raven {
         this.directionY = Math.random() * 5 - 2.5;
         this.markedForDeletion = false;
         this.image = new Image();
-        this.image.src = '';
+        this.image.src = 'https://www.frankslaboratory.co.uk/downloads/97/enemy_raven.png';
         this.frame = 0;
         this.maxFrame = 4;
         this.timeSinceFlap = 0;
         this.flapInterval = Math.random() * 50 + 50;
+        this.randomColors = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)];
+        this.color = 'rgb(' + this.randomColors[0] + ',' + this.randomColors[1] + ',' + this.randomColors[2] + ')';
     }
 
     update(deltaTime) {
@@ -47,12 +54,12 @@ class Raven {
     }
 
     draw() {
-        ctx.strokeRect(this.x, this.y, this.width, this.height);
+        ctx.fillStyle = this.color;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
         ctx.drawImage(this.image, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
     }
 }
 
-const raven = new Raven();
 
 function drawScore() {
     ctx.fillStyle = 'black';
@@ -60,6 +67,11 @@ function drawScore() {
     ctx.fillStyle = 'white';
     ctx.fillText('Score: ' + score, 55, 80);
 }
+
+window.addEventListener('click', function (e) {
+    const detectPixelColor = ctz.getImageData(e.x, e.y, 1, 1);
+    console.log(detectPixelColor);
+})
 
 function animate(timeStamp) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
